@@ -28,6 +28,9 @@ const menu = [{
     key:'2-2',
     router:'/listblog',
   }]
+},{
+  title:'运动会管理',
+  key:'3',
 }]
 
 export default menu;

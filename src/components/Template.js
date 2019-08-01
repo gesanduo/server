@@ -1,14 +1,9 @@
 import React from 'react';
 import menuList from '../common/js/menu'
 import { Layout, Menu, Icon } from 'antd';
-const { Header,  Sider } = Layout;
+const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
 
-// function Item(props){
-//   return  (<Menu.Item key={props.key}>
-//     <span>{props.title}</span>
-//   </Menu.Item>);
-// }
 function MenuList(props){
   return (
     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -24,7 +19,7 @@ function MenuList(props){
         }
       >
       {item.children.map((one,i)=>
-        <Menu.Item key={one.key} onClick={props.changeRoute(one.router)}>{one.title}</Menu.Item>
+        <Menu.Item key={one.key} onClick={props.changeRoute.bind(this,one.router)}>{one.title}</Menu.Item>
       )}
     </SubMenu>
       )
@@ -37,7 +32,7 @@ function MenuList(props){
     </Menu>
   )
 }
-class Home extends React.Component{
+class LeftMenu extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -50,8 +45,9 @@ class Home extends React.Component{
   onCollapse(value) {
     this.setState({ collapsed: value })
   }
-  changeRoute(){
-
+  changeRoute(path){
+    console.log(this.props.history)
+    this.props.history.push(`/home${path}`);
   }
   render() {
     return (
@@ -69,4 +65,4 @@ class Home extends React.Component{
   }
 }
 
-export default Home;
+export default LeftMenu;
