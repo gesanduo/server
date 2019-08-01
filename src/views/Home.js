@@ -4,7 +4,32 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-
+// function Item(props){
+//   return  (<Menu.Item key={props.key}>
+//     <span>{props.title}</span>
+//   </Menu.Item>);
+// }
+function MenuList(props){
+  return (
+    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+    {menuList.map((item,index)=>
+      <SubMenu
+        key={item.key}
+        title={
+          <span>
+            <Icon type="team" />
+            <span>{item.title}</span>
+          </span>
+        }
+      >
+      {item.children.map((one,i)=>
+        <Menu.Item key={one.key} onClick={props.changeRoute(one.router)}>{one.title}</Menu.Item>
+      )}
+    </SubMenu>
+    )}
+    </Menu>
+  )
+}
 class Home extends React.Component{
   constructor(props) {
     super(props);
@@ -12,56 +37,21 @@ class Home extends React.Component{
       collapsed:false,
     }
     this.onCollapse = this.onCollapse.bind(this);
+    this.changeRoute = this.changeRoute.bind(this);
   }
 
   onCollapse(value) {
     this.setState({ collapsed: value })
   }
+  changeRoute(){
 
+  }
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <Icon type="pie-chart" />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="desktop" />
-              <span>Option 2</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="user" />
-                  <span>User</span>
-                </span>
-              }
-            >
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="team" />
-                  <span>Team</span>
-                </span>
-              }
-            >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
-              <Icon type="file" />
-              <span>File</span>
-            </Menu.Item>
-          </Menu>
+          <MenuList changeRoute={this.changeRoute}/>
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />

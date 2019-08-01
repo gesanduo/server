@@ -25,7 +25,7 @@ const menu = [{
   },{
     title:'题目列表',
     level:'2',
-    key:'2-1',
+    key:'2-2',
     router:'/listblog',
   }]
 }]
