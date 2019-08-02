@@ -1,15 +1,11 @@
 import React from 'react';
 import menuList from '../common/js/menu'
 import { Layout, Menu, Icon } from 'antd';
-const { Header,  Sider } = Layout;
+const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
 
-// function Item(props){
-//   return  (<Menu.Item key={props.key}>
-//     <span>{props.title}</span>
-//   </Menu.Item>);
-// }
 function MenuList(props){
+  console.log(props);
   return (
     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
     {menuList.map((item,index)=>
@@ -24,7 +20,7 @@ function MenuList(props){
         }
       >
       {item.children.map((one,i)=>
-        <Menu.Item key={one.key} onClick={props.changeRoute(one.router)}>{one.title}</Menu.Item>
+        <Menu.Item key={one.key} onClick={()=>props.changeRoute(one.router)}>{one.title}</Menu.Item>
       )}
     </SubMenu>
       )
@@ -50,8 +46,8 @@ class Home extends React.Component{
   onCollapse(value) {
     this.setState({ collapsed: value })
   }
-  changeRoute(){
-
+  changeRoute(path){
+    this.props.history.push(`/home${path}`);
   }
   render() {
     return (
