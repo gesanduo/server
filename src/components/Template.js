@@ -1,5 +1,6 @@
 import React from 'react';
 import menuList from '../common/js/menu'
+import {Link} from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -19,7 +20,11 @@ function MenuList(props){
         }
       >
       {item.children.map((one,i)=>
-        <Menu.Item key={one.key} onClick={props.changeRoute.bind(this,one.router)}>{one.title}</Menu.Item>
+        <Menu.Item key={one.key}>
+          <Link to={one.router}>
+          {one.title}
+          </Link>
+        </Menu.Item>
       )}
     </SubMenu>
       )
@@ -46,7 +51,6 @@ class LeftMenu extends React.Component{
     this.setState({ collapsed: value })
   }
   changeRoute(path){
-    console.log(this.props.history)
     this.props.history.push(`/home${path}`);
   }
   render() {
@@ -54,7 +58,7 @@ class LeftMenu extends React.Component{
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
-          <MenuList changeRoute={this.changeRoute}/>
+          <MenuList/>
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} />

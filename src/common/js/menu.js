@@ -21,12 +21,12 @@ const menu = [{
     title:'试卷列表',
     level:'2',
     key:'2-1',
-    router:'/addblog',
+    router:'/listExam',
   },{
     title:'题目列表',
     level:'2',
     key:'2-2',
-    router:'/listblog',
+    router:'/listExamItem',
   }]
 },{
   title:'运动会管理',

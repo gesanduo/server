@@ -1,5 +1,7 @@
+
 import React from "react";
-import { HashRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Layout from '../components/Template';
 
 import loadable from '../common/js/loadable';
 function LoadComponent(name){
@@ -7,15 +9,14 @@ function LoadComponent(name){
 }
 function router() {
   return (
-    <HashRouter >
-      <Switch>
-        <Route exact path='/' component={LoadComponent('App')} name="首页"/>
-        <Route path='/about' component={LoadComponent('About')} name="关于"/>
-        <Route path='/home' component={LoadComponent('Home')} name="主页"/>
-        <Route path='/home/addblog' component={LoadComponent('AddBlog')} name="写博客"/>
-        <Route path='/home/listblog' component={LoadComponent('ListBlog')} name="博客列表"/>
-      </Switch>
-    </HashRouter>
+    <Router>
+      <div>
+        <Layout>
+          <Route path="/addblog" component={LoadComponent('AddBlog')} />
+          <Route path="/listblog" component={LoadComponent('ListBlog')} />
+        </Layout>
+      </div>
+    </Router>
   )
 }
 
