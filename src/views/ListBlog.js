@@ -1,40 +1,31 @@
 import React from 'react';
 import api from '../common/js/api'
-import { Table, Divider, Tag } from 'antd';
+import { Table, Divider } from 'antd';
 
 const columns=[{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: '标题',
+    dataIndex: 'title',
+    key: 'title',
   },{
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: '简介',
+    dataIndex: 'content',
+    key: 'content',
+    render:tag =>(<span>{tag.substr(0,10)}</span>)
   },{
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: '创建日期',
+    dataIndex: 'createDate',
+    key: 'createDate',
+    render:tag =>(<span>{tag}</span>)
   },{
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <span>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </span>
-    ),
+    title: '阅读量',
+    dataIndex: 'read',
+    key: 'read',
   },{
-    title: 'Action',
+    title: '评论数',
+    dataIndex: 'comment',
+    key: 'comment',
+  },{
+    title: '操作',
     key: 'action',
     render: (text, record) => (
       <span>
@@ -57,9 +48,8 @@ class About extends React.Component{
       pageSize:this.state.pageSize,
     }
     api.listBlog(params).then(res=>{
-      console.log(res);
       this.setState({
-        list:res,
+        list:res.list,
       })
     })
   }

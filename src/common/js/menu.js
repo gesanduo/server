@@ -6,12 +6,12 @@ const menu = [{
     title:'写博客',
     level:'2',
     key:'1-1',
-    router:'/addblog',
+    router:'/addBlog',
   },{
     title:'博客列表',
     level:'2',
     key:'1-2',
-    router:'/listblog',
+    router:'/listBlog',
   }]
 },{
   title:'试卷',
@@ -27,6 +27,11 @@ const menu = [{
     level:'2',
     key:'2-2',
     router:'/listExamItem',
+  },{
+    title:'增加题目',
+    level:'2',
+    key:'2-3',
+    router:'/addExamItem',
   }]
 },{
   title:'运动会管理',

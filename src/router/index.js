@@ -12,8 +12,9 @@ function router() {
     <Router>
       <div>
         <Layout>
-          <Route path="/addblog" component={LoadComponent('AddBlog')} />
-          <Route path="/listblog" component={LoadComponent('ListBlog')} />
+          <Route path="/addBlog" component={LoadComponent('AddBlog')} />
+          <Route path="/listBlog" component={LoadComponent('ListBlog')} />
+          <Route path="/addExamItem" component={LoadComponent('AddExamItem')} />
         </Layout>
       </div>
     </Router>

@@ -7,6 +7,9 @@ const api = {
   },
   listBlog(params){
     return axios.get(url.listBlog,{params})
+  },
+  addExamItem(params){
+    return axios.post(url.addExamItem,params);
   }
 }
 export default api;
